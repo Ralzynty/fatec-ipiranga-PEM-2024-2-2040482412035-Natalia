@@ -1,0 +1,132 @@
+//*Autores: Natalia Yuri Ike  e  Nathalia dos Santos Bioni
+//* Disciplina: Programaçao Estruturada e Modular 
+//* Prof. Carlos Veríssimo                                   
+//* Objetivo do Programa: Tabuleiro de Xadrez (Xeque Pastor)     
+//* Data - 30/08/2024   
+
+#include <stdio.h>
+#include <string.h>
+
+#define ROWS 8
+#define COLS 8
+
+// Função para inicializar o tabuleiro de xadrez
+void initializeBoard(char board[ROWS][COLS][4]) {
+    // Limpar o tabuleiro
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            strcpy(board[i][j], "   ");
+        }
+    }
+
+    // Definindo as peças das brancas
+    // Torres
+    strcpy(board[0][0], "BT1"); strcpy(board[0][7], "BT2");
+    // Cavalos
+    strcpy(board[0][1], "BC1"); strcpy(board[0][6], "BC2");
+    // Bispos
+    strcpy(board[0][2], "BB1"); strcpy(board[0][5], "BB2");
+    // Rainha
+    strcpy(board[0][3], "BD ");
+    // Rei
+    strcpy(board[0][4], "BR ");
+    // Peões
+    for (int j = 0; j < COLS; j++) {
+        sprintf(board[1][j], "BP%d", j + 1);
+    }
+
+    // Definindo as peças das pretas
+    // Torres
+    strcpy(board[7][0], "PT1"); strcpy(board[7][7], "PT2");
+    // Cavalos
+    strcpy(board[7][1], "PC1"); strcpy(board[7][6], "PC2");
+    // Bispos
+    strcpy(board[7][2], "PB1"); strcpy(board[7][5], "PB2");
+    // Rainha
+    strcpy(board[7][3], "PD ");
+    // Rei
+    strcpy(board[7][4], "PR ");
+    // Peões
+    for (int j = 0; j < COLS; j++) {
+        sprintf(board[6][j], "PP%d", j + 1);
+    }
+}
+
+// Função para imprimir o tabuleiro de xadrez
+void printBoard(char board[ROWS][COLS][4]) {
+    printf("   a   b   c   d   e   f   g   h\n");
+    for (int i = ROWS - 1; i >= 0; i--) {
+        printf("%d ", i + 1);
+        for (int j = 0; j < COLS; j++) {
+            printf("%s ", board[i][j]);
+        }
+        printf("%d\n", i + 1);
+    }
+    printf("   a   b   c   d   e   f   g   h\n");
+}
+
+// Função para movimentar uma peça
+void movePiece(char board[ROWS][COLS][4], int startRow, int startCol, int endRow, int endCol, const char* moveDescription) {
+    printf("_____________________________________________________________\n");
+    printf("%s\n", moveDescription);
+    printf("_____________________________________________________________\n");
+
+    // Salvar a peça na posição final
+    char temp[4];
+    strcpy(temp, board[startRow][startCol]);
+
+    // Marcar a origem com "..."
+    strcpy(board[startRow][startCol], "...");
+
+    // Exibir o tabuleiro com a origem marcada
+    printBoard(board);
+
+    // Realizar o movimento da peça
+    strcpy(board[endRow][endCol], temp);
+
+    // Limpar a origem após o movimento
+    strcpy(board[startRow][startCol], "   ");
+}
+
+int main() {
+    printf("_____________________________________________________________\n");
+    printf("Posição Inicial do Tabuleiro\n");
+    printf("_____________________________________________________________\n");
+    
+    char board[ROWS][COLS][4];
+    initializeBoard(board);
+    printBoard(board);
+    printf("\n");
+
+    // Jogada 1: Peão branco de e2 para e4
+    movePiece(board, 1, 4, 3, 4, "Jogada 1 - Brancas jogam: Peão branco de e2 para e4");
+    printf("\n");
+
+    // Jogada 2: Peão preto de e7 para e5
+    movePiece(board, 6, 4, 4, 4, "Jogada 1 - Pretas jogam: Peão preto de e7 para e5");
+    printf("\n");
+
+    // Jogada 3: Bispo branco de f1 para c4
+    movePiece(board, 0, 5, 2, 3, "Jogada 2 - Brancas jogam: Bispo branco de f1 para c4");
+    printf("\n");
+
+    // Jogada 4: Cavalo preto de b8 para c6
+    movePiece(board, 7, 1, 5, 2, "Jogada 2 - Pretas jogam: Cavalo preto de b8 para c6");
+    printf("\n");
+
+    // Jogada 5: Rainha branca de d1 para h5
+    movePiece(board, 0, 3, 0, 7, "Jogada 3 - Brancas jogam: Rainha branca de d1 para h5");
+    printf("\n");
+
+    // Jogada 6: Cavalo preto de g8 para f6
+    movePiece(board, 7, 6, 5, 5, "Jogada 3 - Pretas jogam: Cavalo preto de g8 para f6");
+    printf("\n");
+
+    // Jogada 7: Rainha branca de h5 para f7 (Xeque-Mate)
+    movePiece(board, 0, 7, 4, 5, "Jogada 4 - Brancas jogam: Rainha branca de h5 para f7 (Xeque-Mate)");
+
+    printf("Xeque-Mate com Qxf7!!\n");
+
+    return 0;
+}
+

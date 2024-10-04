@@ -1,3 +1,12 @@
+/*---------------------------------------------*
+* Disciplina: Programaçao Estruturada e Modular*
+*          Prof. Carlos Veríssimo              *
+*----------------------------------------------*
+* Objetivo do Programa: Desenvolver BubbleSort *
+* Data - 04/10/2024                            * 
+* Autor: Natalia Yuri Ike                      *
+*----------------------------------------------*/
+
 #include <stdio.h>
 
 void bubbleSort(int arr[], int n) {

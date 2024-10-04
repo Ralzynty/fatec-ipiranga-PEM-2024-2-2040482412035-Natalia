@@ -1,3 +1,12 @@
+/*--------------------------------------------- *
+* Disciplina: Programaçao Estruturada e Modular *
+*          Prof. Carlos Veríssimo               *
+*-----------------------------------------------*
+* Objetivo do Programa: BubbleSort com Melhorias*
+* Data - 04/10/2024                             * 
+* Autor: Natalia Yuri Ike                       *
+*-----------------------------------------------*/
+
 #include <stdio.h>
 
 // Função para trocar dois elementos

@@ -1,3 +1,12 @@
+/*---------------------------------------------*
+* Disciplina: Programaçao Estruturada e Modular*
+*          Prof. Carlos Veríssimo              *
+*----------------------------------------------*
+* Objetivo do Programa: Bubble Sort            *
+* Data - 15/10/2024                            * 
+* Autor: Natalia Yuri Ike                      *
+*----------------------------------------------*/
+
 #include <stdio.h>
 #include <time.h>
 

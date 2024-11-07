@@ -1,3 +1,12 @@
+/*---------------------------------------------*
+* Disciplina: Programaçao Estruturada e Modular*
+*          Prof. Carlos Veríssimo              *
+*----------------------------------------------*
+* Objetivo do Programa: Bubble Sort            *
+* Data - 18/10/2024                            * 
+* Autor: Natalia Yuri Ike                      *
+*----------------------------------------------*/
+
 #include <stdio.h>
 
 void troca(int* a, int* b) {
